@@ -1,16 +1,16 @@
 {
   "name": "vue-toast",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "license": "MIT",
-  "main": "dist/js/app.6c19e6ed.js",
+  "main": "lib/vue-toast.umd.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/meiyongfei/vue-toast"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build  --target lib --name vue-toast",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
