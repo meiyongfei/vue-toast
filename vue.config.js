@@ -6,11 +6,5 @@ function resolve(dir) {
 module.exports = {
 	//基础 vue.config.js
 	publicPath:"./",
-	productionSourceMap: false,
-	css: {
-		extract: false,
-		sourceMap: false,
-		loaderOptions: {},
-		modules: false
-	}
+	productionSourceMap: false
 };
