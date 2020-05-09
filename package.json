@@ -1,6 +1,6 @@
 {
   "name": "@cmbi/vue-toast",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "lib/vue-toast.umd.min.js",
   "private": false,
   "license": "MIT",
