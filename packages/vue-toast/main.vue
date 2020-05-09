@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-    name: 'vue-toast',
+  name: 'vue-toast',
 	data() {
 		return {};
 	},
