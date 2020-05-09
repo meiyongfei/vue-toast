@@ -1,5 +1,5 @@
 {
-  "name": "vue-toast",
+  "name": "@cmbi/vue-toast",
   "version": "0.1.7",
   "main": "lib/vue-toast.umd.min.js",
   "private": false,
