@@ -3,7 +3,7 @@
     <div>
     <h1>测试 vueToast 组件</h1>
     <div class="container" ref="wise">
-      <vue-toast type="1" class="showToast1" />
+      <vue-toast :toastObj="toastObj" :visable="visable" @closeToast="closeToast"/>
     </div>
   </div>
   </div>
@@ -15,9 +15,17 @@ export default {
   components: {},
   data () {
     return {
+      visable: true,
+      toastObj: {
+        msgType: "5",
+        imageUrl: "https://dss1.bdstatic.com/6OF1bjeh1BF3odCf/it/u=3026049548,2736935058&fm=85&app=92&f=JPEG?w=121&h=75&s=15B87D7F08700082698CF0F503008060"
+      }
     }
   },
   methods: {
+    closeToast() {
+      this.visable = false
+    }
   }
 }
 </script>

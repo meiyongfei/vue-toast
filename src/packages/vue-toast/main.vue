@@ -1,18 +1,21 @@
 <template>
-	<div class="toast" v-if="type !== '6'" :class="{waring: types === 'waring'}">
-		<div class="left">
-			<img src="../../assets/warning.png" alt="" v-if="types === 'waring'" />
-			<img src="../../assets/tips.png" alt="" v-else />
+	<div class="toast-wrap" v-show="visable">
+		<div class="toast" v-if="toastObj.msgType === '4'" :class="{waring: toastObj.noticeBarMode === 'WARNING'}">
+			<div class="left">
+				<img src="../../assets/warning.png" alt="" v-if="toastObj.noticeBarMode === 'WARNING'" />
+				<img src="../../assets/tips.png" alt="" v-else />
+			</div>
+			<div class="title">{{ toastObj.msgContent }}</div>
+			<div class="detail" v-if="detail">详情</div>
+			<div class="right" v-if="toastObj.extraButton === ' CLOSE' || toastObj.extraButton === ' MORE'">
+				<img src="../../assets/close.png" alt="" v-if="toastObj.extraButton === ' CLOSE'" />
+				<img src="../../assets/next.png" alt="" v-else-if="toastObj.extraButton === ' MORE'" />
+			</div>
 		</div>
-		<div class="title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
-		<div class="detail" v-if="detail">详情</div>
-		<div class="right" v-if="right">
-			<img src="../../assets/warning.png" alt="" v-if="types === 'waring'" />
-			<img src="../../assets/tips.png" alt="" v-else />
+		<div v-else-if="toastObj.msgType === '5'" class="toast-img">
+			<img src="../../assets/clone-dark.png" alt="" class="closed" @click="closeToast">
+			<img :src="toastObj.imageUrl" alt="" class="poster" />
 		</div>
-	</div>
-	<div v-else class="toast-img">
-		<img :src="imgsrc" alt="" class="poster" />
 	</div>
 </template>
 <script>
@@ -22,27 +25,23 @@ export default {
     return {};
   },
   props: {
-    type: {
-      type: String,
+    toastObj: {
+      type: Object,
       required: true
-    },
-    imgsrc: {
-      type: String,
-      required: false
-    },
-    types: {
-      type: String,
-      required: false,
-      default: 'normal'
-    },
+	},
+	visable: {
+		type: Boolean,
+		default: false
+	},
     detail: {
       type: Boolean,
       default: false
-    },
-    right: {
-      type: Boolean,
-      default: false
     }
+  },
+  methods: {
+	  closeToast() {
+		  this.$emit('closeToast')
+	  }
   }
 };
 </script>
@@ -91,6 +90,12 @@ box-sizing: border-box;
 	.poster {
 		width: 100%;
 		display: block;
+	}
+	.closed{
+		position: absolute;
+		right: 13px;
+		top:13px;
+		width: 8px;
 	}
 }
 </style>
