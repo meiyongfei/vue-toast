@@ -46,6 +46,10 @@ export default {
 </script>
 <style lang="less">
 /* eslint-disable */
+.toast-wrap{
+	width: 100%;
+	position: relative;
+}
 .toast {
 width: 100%;
 position: relative;
