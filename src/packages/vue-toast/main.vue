@@ -1,18 +1,18 @@
 <template>
 	<div class="toast-wrap" v-show="visable">
-		<div class="toast" v-if="toastObj.msgType === '4'" :class="{waring: toastObj.noticeBarMode === 'WARNING'}">
+		<div class="toast" v-if="toastObj.msgType === 'NOTICE_BAR_TEXT'" :class="{waring: toastObj.noticeBarMode === 'WARNING'}">
 			<div class="left">
 				<img src="../../assets/warning.png" alt="" v-if="toastObj.noticeBarMode === 'WARNING'" />
 				<img src="../../assets/tips.png" alt="" v-else />
 			</div>
-			<div class="title">{{ toastObj.msgContent }}</div>
-			<div class="detail" v-if="detail">详情</div>
-			<div class="right" v-if="toastObj.extraButton === ' CLOSE' || toastObj.extraButton === ' MORE'">
-				<img src="../../assets/close.png" alt="" v-if="toastObj.extraButton === ' CLOSE'" />
-				<img src="../../assets/next.png" alt="" v-else-if="toastObj.extraButton === ' MORE'" />
+			<div class="title">{{ toastObj.msgTitle }}</div>
+			<div class="detail" v-if="toastObj.msgContent.trim().length > 1" @click="openDetail(toastObj.msgContent)">详情</div>
+			<div class="right" v-if="toastObj.extraButton === 'CLOSE' || toastObj.extraButton === 'MORE'">
+				<img src="../../assets/close.png" alt="" v-if="toastObj.extraButton === 'CLOSE'" />
+				<img src="../../assets/next.png" alt="" v-else-if="toastObj.extraButton === 'MORE'" />
 			</div>
 		</div>
-		<div v-else-if="toastObj.msgType === '5'" class="toast-img">
+		<div v-else-if="toastObj.msgType === 'NOTICE_BAR_PICTURE'" class="toast-img">
 			<img src="../../assets/clone-dark.png" alt="" class="closed" @click="closeToast">
 			<img :src="toastObj.imageUrl" alt="" class="poster" />
 		</div>
@@ -32,15 +32,14 @@ export default {
 	visable: {
 		type: Boolean,
 		default: false
-	},
-    detail: {
-      type: Boolean,
-      default: false
-    }
+	}
   },
   methods: {
 	  closeToast() {
 		  this.$emit('closeToast')
+	  },
+	  openDetail(data) {
+		  this.$emit('openDetail', data)
 	  }
   }
 };
