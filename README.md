@@ -26,7 +26,6 @@ Vue.use(vueToast)
   extraButton：CLOSE 关闭图标
 
 #事件
-    openDetail 点击详情弹出详情弹框
-    closeToast 关闭弹框
+    goMore 点击goMore跳转
 #组件
-    <vue-toast :toastObj="toastObj" :visable="visable" @closeToast="closeToast" @openDetail="openDetail"/>
+    <vue-toast :toastObj="toastObj" :visable="visable" @openDetail="openDetail"/>
